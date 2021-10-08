@@ -23,10 +23,10 @@ public class Guess_my_number {
         sc = new Scanner(System.in);
         
         String entrée = "";
-        System.out.println("choisisez votre niveau; facile, normal ou difficile");
+        System.out.println("choisisez votre niveau; facile ou difficile");
         entrée = sc.next();
         if ("facile".equals(entrée) ){
-            System.out.println("aloooooooooooooo");
+            
             System.out.println("entrez un nombre entre 1 et 100");
             
             double nb = sc.nextDouble();
@@ -63,7 +63,7 @@ public class Guess_my_number {
         }
             
         if ("difficile".equals(entrée) ){
-            System.out.println("alo coco");
+           
             System.out.println("entrez un nombre entre 1 et 1000");
             
             double nb1 = sc.nextDouble();
