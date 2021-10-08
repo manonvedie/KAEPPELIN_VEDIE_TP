@@ -58,35 +58,40 @@ public class Guess_my_number {
 
 
        
-                    
+                }
+            }
+        }
+            
         if ("difficile".equals(entrée) ){
             System.out.println("alo coco");
             System.out.println("entrez un nombre entre 1 et 1000");
             
             double nb1 = sc.nextDouble();
             int compteur1 = 0;
+            Random generateurAleat = new Random();
+
             int n1 = generateurAleat.nextInt(1000);
             System.out.println(n1);
             
-            while (nb1 != n1){
+            while (nb1 != n1 && compteur1 <=  2){
                 if(nb1>n1){
                     System.out.println("trop grand");
                     nb1 = sc.nextDouble();
                     compteur1 +=1;
 
                 }
-                if(nb<n){
+                if(nb1<n1){
                     System.out.println("trop petit");
-                    nb = sc.nextDouble();
-                    compteur +=1;
+                    nb1 = sc.nextDouble();
+                    compteur1 +=1;
 
 
                 }
-                if(nb==n){
+                if(nb1==n1){
                     System.out.println("bien joué");
 
-                    compteur +=1;
-                    System.out.println("vous avez mis " + compteur + " essais");
+                    compteur1 +=1;
+                    System.out.println("vous avez mis " + compteur1 + " essais");
                 
 
 
