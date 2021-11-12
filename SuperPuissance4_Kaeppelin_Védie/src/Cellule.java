@@ -26,9 +26,14 @@ public class Cellule {
             return false;
         }
             
-        
-    public lireCouleurDuJeton () {
-        JETON 
+    }    
+    public String lireCouleurDuJeton () {
+        if (jetonCourant!= null){
+            return jetonCourant.Couleur;
+        }
+        else{
+            return ("vide");
+        }            
         
         
     }
