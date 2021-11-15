@@ -40,7 +40,7 @@ public class Grille {
   
   public boolean etreRemplie(){
       for (int i=0; i<6; i++) {
-          for (int j=0; j<7; i++) {
+          for (int j=0; j<7; j++) {
               if(CellulesJeu[i][j]== null){
                   return true;    
               }
@@ -54,7 +54,7 @@ public class Grille {
 
   public void viderGrille() {
       for (int i=0; i<6; i++) {
-          for (int j=0; j<7; i++) {
+          for (int j=0; j<7; j++) {
              CellulesJeu[i][j].jetonCourant=null; 
              CellulesJeu[i][j].trouNoir=false;
              CellulesJeu[i][j].desintegrateur=false;
