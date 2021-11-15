@@ -62,7 +62,7 @@ public class Grille {
       }
   }
   
-  public void afficherGrilleSurConsole() {
+  public void afficherGrilleSurConsole() { // faire les trous noirs
       for(int i=0; i<6; i++) {
           for (int j=0; j<7; j++) {
               if (CellulesJeu[i][j].lireCouleurDuJeton()=="rouge") {
@@ -80,7 +80,58 @@ public class Grille {
   }
   
   public boolean celluleOccupee(int ligne, int col) {
-      return true;
+      if (CellulesJeu[ligne][col]!=null){
+        return true;
+      }
+      
+      else {
+          return false;
+      }
+  }
+  
+  public String lireCouleurDuJeton(int lig, int col){
+      if (CellulesJeu[lig][col].lireCouleurDuJeton()=="rouge") {
+            return "Rouge";
+        }
+      else {
+            return "Jaune";
+      }
+  }
+  
+  public boolean etreGagnantePourJoueur(Joueur Player) {
+      
+      String c=Player.Couleur;
+      for (int i=0; i<5; i++) {  // if en ligne
+          for (int j=0; j<4; j++) {
+              
+              if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i][j+1].lireCouleurDuJeton()==c && CellulesJeu[i][j+2].lireCouleurDuJeton()==c && CellulesJeu[i][j+3].lireCouleurDuJeton()==c) {
+                  return true;
+              }
+          }
+          
+      }
+      // if en colonne
+      for (int j=0; j<6; j++) {
+          for (int i=0; i<3; i++) {
+              if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i+1][j].lireCouleurDuJeton()==c && CellulesJeu[i+2][j].lireCouleurDuJeton()==c && CellulesJeu[i+3][j].lireCouleurDuJeton()==c) {
+                  return true;
+              }
+          }
+      }
+      // if en diagonale montante
+      for (int i=3; i<6; i++) {
+          for (int j=0; j<4; j++) {
+              if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i+1][j+1].lireCouleurDuJeton()==c && CellulesJeu[i+2][j+2].lireCouleurDuJeton()==c && CellulesJeu[i+3][j+3].lireCouleurDuJeton()==c) {
+                  return true;
+          }
+      }
+      // if en diagonale descendante
+      for (int i=0; i<3; i++) {
+          for (int j=0; j<4; j++) {
+              if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i+1][j+1].lireCouleurDuJeton()==c && CellulesJeu[i+2][j+2].lireCouleurDuJeton()==c && CellulesJeu[i+3][j+3].lireCouleurDuJeton()==c) {
+                  return true;
+          }
+      }
   }
 }
 
