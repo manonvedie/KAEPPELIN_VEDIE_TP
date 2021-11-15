@@ -12,11 +12,11 @@ public class Partie {
     Joueur [] ListeJoueurs = new Joueur [2];
     int joueurCourant;
     Grille GrilleJeu = new Grille();
-    int nbraléat;
             
     public void attribuerCouleursAuxJoueurs(){
-        int.nbraléat = Maths.Random();
-        if (nbraléat!=1){
+        Random generateurAleat = new Random();
+            int n = generateurAleat.nextInt(1);
+        if (n!=1){
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
             System.out.println("la couleur du joueur1 est" +ListeJoueurs[0].Nom);
@@ -33,7 +33,16 @@ public class Partie {
  
     }
     public void initialiserPartie(){
-        
+        int nbrTN = 0 ;
+        while(nbrTN<=5){
+            int i=(int)(Math.random() * 6);
+            int j=(int)(Math.random() * 7);
+            if (GrilleJeu.CellulesJeu[i][j].desintegrateur==false && GrilleJeu.CellulesJeu[i][j].trouNoir==false){
+                GrilleJeu.
+                nbrTN+=1
+            }
+            
+        }       
     }
         
     
