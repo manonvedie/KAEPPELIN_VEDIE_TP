@@ -72,7 +72,7 @@ public class Grille {
                   System.out.print("J");
               }
               if (CellulesJeu[i][j].lireCouleurDuJeton()=="vide") {
-                  System.out.print("/");
+                  System.out.print("_ ");
               }
           }
           System.out.println();
