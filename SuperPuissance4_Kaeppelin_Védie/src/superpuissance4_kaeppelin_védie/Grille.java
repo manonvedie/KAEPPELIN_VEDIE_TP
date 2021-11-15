@@ -16,7 +16,7 @@ public class Grille {
   public Grille() {
       CellulesJeu= new Cellule [6][7];
       for (int i=0; i<6; i++){
-          for (int j=0; j<7; i++) {
+          for (int j=0; j<7; j++) {
               CellulesJeu[i][j] = new Cellule();
           }
       }
@@ -66,15 +66,16 @@ public class Grille {
       for(int i=0; i<6; i++) {
           for (int j=0; j<7; j++) {
               if (CellulesJeu[i][j].lireCouleurDuJeton()=="rouge") {
-                  System.out.println("R");
+                  System.out.print("R");
               }
               if (CellulesJeu[i][j].lireCouleurDuJeton()=="jaune") {
-                  System.out.println("J");
+                  System.out.print("J");
               }
               if (CellulesJeu[i][j].lireCouleurDuJeton()=="vide") {
-                  System.out.println("/");
+                  System.out.print("/");
               }
           }
+          System.out.println();
       }
   }
   
