@@ -40,12 +40,13 @@ public class Partie {
             int i=(int)(Math.random() * 6);
             int j=(int)(Math.random() * 7);
             if (GrilleJeu.CellulesJeu[i][j].desintegrateur==false && GrilleJeu.CellulesJeu[i][j].trouNoir==false){
-                GrilleJeu.
-                nbrTN+=1
+                
+                
             }
             
         }       
     }
+    
         
     
     
