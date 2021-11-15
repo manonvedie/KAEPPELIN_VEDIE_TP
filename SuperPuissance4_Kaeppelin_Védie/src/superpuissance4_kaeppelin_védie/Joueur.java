@@ -1,3 +1,5 @@
+package superpuissance4_kaeppelin_védie;
+
 
 import java.util.Scanner;
 
