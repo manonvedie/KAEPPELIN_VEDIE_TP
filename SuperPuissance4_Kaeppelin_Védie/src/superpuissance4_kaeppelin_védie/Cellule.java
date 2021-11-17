@@ -61,15 +61,20 @@ public class Cellule {
     
     public boolean activerTrouNoir() {
         if (trouNoir==true) {
-            jetonCourant=null;
-            trouNoir=false;
+            jetonCourant=null; //si il y a un trou noir, alors on enlève le jeton présent sur la céllule
+            trouNoir=false; // on enlève le trou noir
             return true;
         }
         else {
             return false;
         }
     }
-            
+      
+    public Jeton recupererJeton() {
+        return jetonCourant; 
+    }
+    
+    
     }
     
     
