@@ -107,19 +107,41 @@ public class Partie {
                 System.out.println("ERREUR!!!!: Veuillez ressaisir un chiffre compris entre 1 et 3:");
                 saisie = sc.nextInt();
            
-            
-            if (saisie==1){
-            Scanner sc = new Scanner(System.in);
-
             }
+            if (saisie==1){
+                Scanner s = new Scanner(System.in);
+                int Numcolonne = s.nextInt()-1;
+                while(Numcolonne>6 && Numcolonne<0 ){
+                    System.out.println("monsieur vous ne savez pas compter les colonnes, ressaisissez un numéro de colonne");
+                    Numcolonne = s.nextInt()-1;
+                    
+                }    
+                while (GrilleJeu.etreRemplie()==true){
+                    System.out.println("la colonne est pleine, entrez a nouveau un nouveau numéro de colonne");
+                    Numcolonne = s.nextInt()-1;
+                }                    
                 
             }
+                
+            joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants-1;
+            System.out.println(joueurCourant.Nom + ", il vous reste"+ joueurCourant.nombreJetonsRestants);
                 
                 
                 
                 
                 
             if (saisie==2){
+                Scanner nbre = new Scanner(System.in);
+                System.out.println("entrez votre numéro de ligne pour récuperer votre jeton");
+                int ligne = nbre.nextInt();
+                while (ligne<0 && ligne>6){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    ligne = nbre.nextInt()-1;
+
+                }
+                
+                
+                
                 
             }
                 
