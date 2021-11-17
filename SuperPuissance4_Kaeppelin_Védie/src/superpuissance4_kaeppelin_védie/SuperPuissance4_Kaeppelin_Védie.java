@@ -22,7 +22,7 @@ public class SuperPuissance4_Kaeppelin_Védie {
         C.affecterJeton(j);
         System.out.println(C.lireCouleurDuJeton());
         Grille G = new Grille ();
-        G.afficherGrilleSurConsole();
+        // G.afficherGrilleSurConsole();
         G.ajouterJetonDansColonne(j,4);
         G.afficherGrilleSurConsole();
         
