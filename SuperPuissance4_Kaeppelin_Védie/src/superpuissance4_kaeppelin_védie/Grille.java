@@ -125,15 +125,16 @@ public class Grille {
                   return true;
           }
       }
+      }
       // if en diagonale descendante
-       for (int i=0; i<3; i++) {
+       for (i=0; i<3; i++) {
           for (int j=0; j<4; j++) {
               if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i+1][j+1].lireCouleurDuJeton()==c && CellulesJeu[i+2][j+2].lireCouleurDuJeton()==c && CellulesJeu[i+3][j+3].lireCouleurDuJeton()==c) {
                   return true;
               }
           }
       }
-  }
+  
 }
 
   
