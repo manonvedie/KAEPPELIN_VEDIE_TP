@@ -16,8 +16,17 @@ public class SuperPuissance4_Kaeppelin_Védie {
     public static void main(String[] args) {
         // TODO code application logic here
         Jeton j= new Jeton("rouge");
+        System.out.println(j.LireCouleur());
+        Cellule C= new Cellule();
+        System.out.println(C.lireCouleurDuJeton());
+        C.affecterJeton(j);
+        System.out.println(C.lireCouleurDuJeton());
         Grille G = new Grille ();
         G.afficherGrilleSurConsole();
+        G.ajouterJetonDansColonne(j,4);
+        G.afficherGrilleSurConsole();
+        
+        
         
     }
     
