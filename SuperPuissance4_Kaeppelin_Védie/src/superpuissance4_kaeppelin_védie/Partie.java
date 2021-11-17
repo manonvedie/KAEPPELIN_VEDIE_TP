@@ -190,3 +190,4 @@ public class Partie {
             //utiliser un desintégrateur
 
 }
+}
