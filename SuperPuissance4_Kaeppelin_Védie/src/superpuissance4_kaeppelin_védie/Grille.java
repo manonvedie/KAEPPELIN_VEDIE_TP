@@ -172,7 +172,6 @@ return false;
     CellulesJeu[L][C].jetonCourant=null;
     return jetonVisé;
 }
- 
 }
   
 
