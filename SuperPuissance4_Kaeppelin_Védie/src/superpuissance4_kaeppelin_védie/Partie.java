@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class Partie {
     Joueur [] ListeJoueurs = new Joueur [2];
-    int joueurCourant;
+    Joueur joueurCourant;
     Grille GrilleJeu = new Grille();
             
     public void attribuerCouleursAuxJoueurs(){
@@ -86,8 +86,62 @@ public class Partie {
         else{
             joueurCourant = ListeJoueurs[1];
         }
+                
+        attribuerCouleursAuxJoueurs();    //Distribution des couleurs:
+
+        
+        
+        initialiserPartie();
+        
+        while(GrilleJeu.etreRemplie()==false/* =nombre de jetons pour le joueur(verifier)*/ && GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==false  /*partie finie?*/&&GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==false ){
+            GrilleJeu.afficherGrilleSurConsole();
+            
+            Scanner sc = new Scanner(System.in);
+            System.out.println(joueurCourant.Nom + "c'est a vous de jouer ");
+            System.out.println(joueurCourant.Nom + "il vous reste il faut aussi rajouter le nombre de désintégrateur");
+            System.out.println("1) Placer un jeton");
+            System.out.println("2) Récupérer un jeton");
+            System.out.println("3) Utiliser un désintégrateur");
+            int saisie = sc.nextInt();
+            while (saisie>3 || saisie<=0){
+                System.out.println("ERREUR!!!!: Veuillez ressaisir un chiffre compris entre 1 et 3:");
+                saisie = sc.nextInt();
+           
+            
+            if (saisie==1){
+            Scanner sc = new Scanner(System.in);
+
+            }
+                
+            }
+                
+                
+                
+                
+                
+            if (saisie==2){
+                
+            }
+                
+        
+            
+            if (saisie==3){
+                
+            }
+    
+        }    
+    
+    
+    
+    
+    
     }
         
     
-    
+            //afficher la grille
+        //demander au joueur ce qu'il veut faire
+           //placer un jeton dans une colonne
+            //récupérer un jeton de la grille de jeu
+            //utiliser un desintégrateur
+
 }
