@@ -134,23 +134,46 @@ public class Partie {
                 Scanner nbre = new Scanner(System.in);
                 System.out.println("entrez votre numéro de ligne pour récuperer votre jeton");
                 int ligne = nbre.nextInt();
-                while (ligne<0 && ligne>6){
+                while (ligne<0 && ligne>5){
                     System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
                     ligne = nbre.nextInt()-1;
-
                 }
-                
-                
-                
-                
-            }
-                
-        
+                Scanner Nombre = new Scanner(System.in);
+                int colonne = Nombre.nextInt();
+                while (colonne <0 && colonne>6){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    colonne = nbre.nextInt()-1;                                                      
+                }                
+                if (GrilleJeu.celluleOccupee(ligne, colonne)==false && GrilleJeu.recupererJeton(ligne, colonne).Couleur.equals(joueurCourant.Couleur)){
+                    GrilleJeu.tasserGrille(colonne);
+                    joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants-1;
+                    System.out.println(joueurCourant.Nom + ", il vous reste"+ joueurCourant.nombreJetonsRestants);                                       
+                }
+                              
+            }                      
             
-            if (saisie==3){
+            if (saisie==3 && joueurCourant.nombreDesintegrateurs!=0){
+                System.out.println("vous allez utiliser un désintégrateur");             
+                Scanner nbre2 = new Scanner(System.in);
+                System.out.println("entrez votre numéro de ligne pour récuperer votre jeton");
+                int ligne = nbre2.nextInt();
+                
+                while (ligne<0 && ligne>5){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    ligne = nbre2.nextInt()-1;
+                }
+                Scanner Nombre2 = new Scanner(System.in);
+                int colonne = Nombre2.nextInt();
+                
+                while (colonne <0 && colonne>6){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    colonne = Nombre2.nextInt()-1;        
+               
                 
             }
-    
+            
+                
+            
         }    
     
     
