@@ -10,7 +10,7 @@ package superpuissance4_kaeppelin_védie;
  * @author KAEPPELIN Mayeul
  */
 public class Cellule {
-    Jeton jetonCourant;
+    Jeton jetonCourant; // on initialise 
     boolean trouNoir;
     boolean desintegrateur;
     
@@ -51,7 +51,7 @@ public class Cellule {
     }
     
     public boolean presenceTrouNoir() {
-        if (trouNoir==true) {
+        if (trouNoir==true) { // si il y a un trou noir
             return true;
         }
         else {
@@ -74,7 +74,45 @@ public class Cellule {
         return jetonCourant; 
     }
     
+    public boolean supprimerJeton() {
+        if (jetonCourant!=null) { // si il y a un jeton
+            jetonCourant=null; // on le supprime
+            return true;
+        }
+        
+        else{ //sinon 
+            return false; // on renvoie false
+        }
+    }
     
+    public boolean placerDesintegrateur() {
+        if (desintegrateur==false) { //si il n'y a pas de desintegrateur sur la cellule 
+            desintegrateur=true; // on en place un sur la cellule
+            return true;
+         }
+        else{ 
+            return false;
+        }
+    }
+    
+    public boolean presenceDesintegrateurs() {
+        if (desintegrateur==true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public boolean recupererDesintegrateur() {
+        if (desintegrateur==true) { // si il y a un désintégrateur
+            desintegrateur=false; //on le supprime
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     }
     
     
