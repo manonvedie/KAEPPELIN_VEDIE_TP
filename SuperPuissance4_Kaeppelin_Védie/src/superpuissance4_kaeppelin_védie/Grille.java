@@ -145,7 +145,15 @@ return false;
        }
     }
 
-   
+ public boolean placerTrouNoir(int L, int C) {
+  if (CellulesJeu[L][C].trouNoir==false) {
+      CellulesJeu[L][C].trouNoir=true;
+      return true;
+  }
+  else {
+      return false;
+  }
+ }   
 
 }
   
