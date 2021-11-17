@@ -43,7 +43,7 @@ public class Joueur {
        nombreDesintegrateurs=nombreDesintegrateurs+1;
    }
    
-   public boolean utiliserDesintegrateurs() {
+   public boolean utiliserDesintegrateur() {
        if (nombreDesintegrateurs>0) {
            nombreDesintegrateurs-=1;
            return true;
