@@ -39,6 +39,36 @@ public class Cellule {
         
         
     }
+    
+    public boolean placerTrouNoir() {
+        if (trouNoir==false) {
+            trouNoir=true; // si il n'y a pas de trou noir déjà positionné dans cette cellule, alors on en positionne un
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public boolean presenceTrouNoir() {
+        if (trouNoir==true) {
+            return true;
+        }
+        else {
+         return false;   
+        }
+    }
+    
+    public boolean activerTrouNoir() {
+        if (trouNoir==true) {
+            jetonCourant=null;
+            trouNoir=false;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
             
     }
     
