@@ -172,6 +172,26 @@ return false;
     CellulesJeu[L][C].jetonCourant=null;
     return jetonVisé;
 }
+ 
+ public boolean placerDesintegrateur (int L, int C) {
+     if (CellulesJeu[L][C].desintegrateur==false) {
+         CellulesJeu[L][C].desintegrateur=true;
+         return true;
+     }
+     else{
+         return false;
+     }
+ }
+ 
+ public boolean supprimerJeton (int L, int C) {
+     if (CellulesJeu[L][C].jetonCourant!=null) {
+         CellulesJeu[L][C].jetonCourant=null;
+         return true;
+     }
+     else{
+         return false;
+     }
+ }
 }
   
 
