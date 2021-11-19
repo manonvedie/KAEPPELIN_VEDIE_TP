@@ -171,6 +171,32 @@ public class Partie {
                
                 
             }
+            if (saisie==3 && joueurCourant.nombreDesintegrateurs==0){
+                System.out.println("ERREUR: Vous n'avez pas de désintégrateur à utiliser");
+                System.out.println("Rechoississez ce que vous voulez faire: 1)Placer un jeton ou 2)Récupérer un jeton");
+                saisie = sc.nextInt();
+                while (saisie>2 || saisie<=0){
+                    System.out.println("ERREUR: Veuillez ressaisir un choix compris entre 1 et 2:");
+                    saisie = sc.nextInt();
+                }
+            }
+            if (joueurCourant==ListeJoueurs[0]){
+                joueurCourant=ListeJoueurs[1];
+            }
+            else{
+                joueurCourant=ListeJoueurs[0];
+            }
+
+            }
+            if(GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true){
+                System.out.println(ListeJoueurs[0].Nom+" a gagné'");
+            }
+            if(GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true){
+                System.out.println(ListeJoueurs[1].Nom+" a gagné");
+            }
+            if(GrilleJeu.etreRemplie()==true){
+                System.out.println("LA partie de termine, il n'y a pas de gagant--> égalité!");
+            }
             
                 
             
