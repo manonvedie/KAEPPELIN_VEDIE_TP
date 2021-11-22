@@ -4,17 +4,34 @@
  */
 package superpuissance4_kaeppelin_védie;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author vedie
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
 
+    Joueur[] ListeJoueurs = new Joueur[2];
+    Joueur joueurCourant;
+    Grille GrilleJeu = new Grille();
+
     /**
      * Creates new form fenetreDeJeu
      */
     public fenetreDeJeu() {
         initComponents();
+        panneau_info_joueurs.setVisible(false);
+        panneau_info_partie.setVisible(false);
+
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {     
+                CelluleGraphique CellGraph = new CelluleGraphique(GrilleJeu.CellulesJeu[i][j]);
+                panneau_grille.add(CellGraph);
+
+            }
+        }
     }
 
     /**
@@ -74,7 +91,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         panneau_grille.setBackground(new java.awt.Color(255, 255, 255));
         panneau_grille.setLayout(new java.awt.GridLayout(6, 7));
-        getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 672, 576));
+        getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 672, 576));
 
         panneau_creation_partie.setBackground(new java.awt.Color(204, 255, 204));
         panneau_creation_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,6 +103,11 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_creation_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         btn_start.setText("Démarrer partie");
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
         panneau_creation_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
 
         nom_joueur1.addActionListener(new java.awt.event.ActionListener() {
@@ -216,6 +238,17 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        // TODO add your handling code here:
+        panneau_info_joueurs.setVisible(true);
+        panneau_info_partie.setVisible(true);
+        initialiserPartie();
+        panneau_grille.repaint();   
+        btn_start.setEnabled(false);
+
+        
+    }//GEN-LAST:event_btn_startActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,7 +283,234 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
         });
     }
+    public void attribuerCouleursAuxJoueurs(){
+    Random generateurAleat = new Random();
+    int n = generateurAleat.nextInt(1);
+    if (n!=1){
+        ListeJoueurs[0].affecterCouleur("rouge");
+        ListeJoueurs[1].affecterCouleur("jaune");
+        System.out.println("la couleur du joueur1 est" +ListeJoueurs[0].Nom);
+         System.out.println("la couleur du joueur2 est" +ListeJoueurs[1].Nom);
+    }
+    else {
+        ListeJoueurs[0].affecterCouleur("jaune");
+        ListeJoueurs[1].affecterCouleur("rouge");
+        System.out.println("la couleur du joueur1 est" +ListeJoueurs[1].Nom);
+        System.out.println("la couleur du joueur2 est" +ListeJoueurs[0].Nom);
 
+    }  
+
+
+    }
+    public void initialiserPartie(){
+           String NomJoueur1 = nom_joueur1.getText();
+        Joueur J1 = new Joueur(NomJoueur1);
+        
+        String NomJoueur2 = nom_joueur2.getText();
+        Joueur J2 = new Joueur(NomJoueur2);
+        
+        
+        System.out.println(J1.Nom + "a la couleur "+ J1.Couleur);
+        System.out.println(J2.Nom + "a la couleur "+ J2.Couleur);
+
+        
+        ListeJoueurs[0]=J1;
+        ListeJoueurs[1]=J2;
+        
+                attribuerCouleursAuxJoueurs();    //Distribution des couleurs:
+
+                
+       lbl_j1_nom.setText(NomJoueur1);
+       lbl_j2_nom1.setText(NomJoueur2);
+       
+       lbl_j1_couleur.setText(J1.Couleur);
+       lbl_j2_couleur1.setText(J2.Couleur);
+
+       lbl_j1_desint.setText(J1.nombreDesintegrateurs+ "");
+       lbl_j2_desint1.setText(J2.nombreDesintegrateurs+"");
+
+      
+    //Création de la grille
+    GrilleJeu.viderGrille();
+    int nbTN=0;
+    while (nbTN<=5){
+        int ligne=(int)(Math.random() * 6);
+        int colone=(int)(Math.random() * 7);
+        if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur==false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir==false){
+            if (nbTN==4 || nbTN==5){
+                GrilleJeu.placerTrouNoir(ligne,colone);
+                GrilleJeu.placerDesintegrateur(ligne,colone);
+            }else{
+                GrilleJeu.placerTrouNoir(ligne,colone);
+            }
+            nbTN+=1;
+    }
+    }
+    
+       
+    int nbDesint=0;
+    while (nbDesint<=3){
+        int ligne=(int)(Math.random() * 6);
+        int colone=(int)(Math.random() * 7);
+        if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur==false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir==false){
+            GrilleJeu.placerDesintegrateur(ligne,colone);
+            nbDesint+=1;
+        }else{
+                nbDesint=nbDesint;
+                }
+    }    
+    for (int i=0;i<21;i++){
+        if (ListeJoueurs[0].Couleur.equals("R")){
+            Jeton jetonjoueurR = new Jeton("R");
+            ListeJoueurs[0].ajouterJeton(jetonjoueurR);
+            Jeton jetonjoueurJ = new Jeton("J");
+            ListeJoueurs[1].ajouterJeton(jetonjoueurJ);
+        }else{
+            Jeton jetonjoueurR = new Jeton("R");
+            ListeJoueurs[1].ajouterJeton(jetonjoueurR);
+            Jeton jetonjoueurJ = new Jeton("J");
+            ListeJoueurs[0].ajouterJeton(jetonjoueurJ);
+        }
+    }
+}
+        
+    public void debuterPartie(){
+            //inscription des 2 joueurs:
+     
+        
+        // premier joueur à commencer la partie 
+        Random generateurAleat = new Random();
+        int n = generateurAleat.nextInt(1);
+        if (n!=1){
+            joueurCourant = ListeJoueurs[0];
+                                           
+                       
+        }
+        else{
+            joueurCourant = ListeJoueurs[1];
+        }
+                
+
+        
+        
+        initialiserPartie();
+        
+        while(GrilleJeu.etreRemplie()==false/* =nombre de jetons pour le joueur(verifier)*/ && GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==false  /*partie finie?*/&&GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==false ){
+            
+            Scanner sc = new Scanner(System.in);
+            System.out.println(joueurCourant.Nom + "c'est a vous de jouer ");
+            System.out.println(joueurCourant.Nom + "il vous reste il faut aussi rajouter le nombre de désintégrateur");
+            System.out.println("1) Placer un jeton");
+            System.out.println("2) Récupérer un jeton");
+            System.out.println("3) Utiliser un désintégrateur");
+            int saisie = sc.nextInt();
+            while (saisie>3 || saisie<=0){
+                System.out.println("ERREUR!!!!: Veuillez ressaisir un chiffre compris entre 1 et 3:");
+                saisie = sc.nextInt();
+           
+            }
+            if (saisie==1){ 
+                Scanner s = new Scanner(System.in);
+                int Numcolonne = s.nextInt()-1;
+                while(Numcolonne>6 && Numcolonne<0 ){
+                    System.out.println("monsieur vous ne savez pas compter les colonnes, ressaisissez un numéro de colonne");
+                    Numcolonne = s.nextInt()-1;
+                    
+                }    
+                while (GrilleJeu.etreRemplie()==true){
+                    System.out.println("la colonne est pleine, entrez a nouveau un nouveau numéro de colonne");
+                    Numcolonne = s.nextInt()-1;
+                }                    
+                
+            }
+                
+            joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants-1;
+            System.out.println(joueurCourant.Nom + ", il vous reste"+ joueurCourant.nombreJetonsRestants);
+                
+                
+                
+                
+                
+            if (saisie==2){
+                Scanner nbre = new Scanner(System.in);
+                System.out.println("entrez votre numéro de ligne pour récuperer votre jeton");
+                int ligne = nbre.nextInt();
+                while (ligne<0 && ligne>5){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    ligne = nbre.nextInt()-1;
+                }
+                Scanner Nombre = new Scanner(System.in);
+                int colonne = Nombre.nextInt();
+                while (colonne <0 && colonne>6){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    colonne = nbre.nextInt()-1;                                                      
+                }                
+                if (GrilleJeu.celluleOccupee(ligne, colonne)==false && GrilleJeu.recupererJeton(ligne, colonne).Couleur.equals(joueurCourant.Couleur)){
+                    GrilleJeu.tasserGrille(colonne);
+                    joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants-1;
+                    System.out.println(joueurCourant.Nom + ", il vous reste"+ joueurCourant.nombreJetonsRestants);                                       
+                }
+                              
+            }                      
+            
+            if (saisie==3 && joueurCourant.nombreDesintegrateurs!=0){
+                System.out.println("vous allez utiliser un désintégrateur");             
+                Scanner nbre2 = new Scanner(System.in);
+                System.out.println("entrez votre numéro de ligne pour récuperer votre jeton");
+                int ligne = nbre2.nextInt();
+                
+                while (ligne<0 && ligne>5){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    ligne = nbre2.nextInt()-1;
+                }
+                Scanner Nombre2 = new Scanner(System.in);
+                int colonne = Nombre2.nextInt();
+                
+                while (colonne <0 && colonne>6){
+                    System.out.println("vous ne pouvez pas saisir un tel chiffre boloss");
+                    colonne = Nombre2.nextInt()-1;        
+               
+                
+            }
+            if (saisie==3 && joueurCourant.nombreDesintegrateurs==0){
+                System.out.println("ERREUR: Vous n'avez pas de désintégrateur à utiliser");
+                System.out.println("Rechoississez ce que vous voulez faire: 1)Placer un jeton ou 2)Récupérer un jeton");
+                saisie = sc.nextInt();
+                while (saisie>2 || saisie<=0){
+                    System.out.println("ERREUR: Veuillez ressaisir un choix compris entre 1 et 2:");
+                    saisie = sc.nextInt();
+                }
+            }
+            if (joueurCourant==ListeJoueurs[0]){
+                joueurCourant=ListeJoueurs[1];
+            }
+            else{
+                joueurCourant=ListeJoueurs[0];
+            }
+
+            }
+            if(GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true){
+                System.out.println(ListeJoueurs[0].Nom+" a gagné'");  
+            }
+            
+            if(GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true){
+                System.out.println(ListeJoueurs[1].Nom+" a gagné");
+            }
+            
+            if(GrilleJeu.etreRemplie()==true){
+                System.out.println("LA partie de termine, il n'y a pas de gagant--> égalité!");
+            }
+            
+                
+            
+        }    
+    
+    
+    
+    
+    
+    } 
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
     private javax.swing.JButton btn_col_1;
