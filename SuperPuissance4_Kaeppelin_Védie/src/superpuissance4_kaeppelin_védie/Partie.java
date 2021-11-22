@@ -23,7 +23,7 @@ public class Partie {
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
             System.out.println("la couleur du joueur1 est" +ListeJoueurs[0].Nom);
-            System.out.println("la couleur du joueur2 est" +ListeJoueurs[1].Nom);
+             System.out.println("la couleur du joueur2 est" +ListeJoueurs[1].Nom);
         }
         else {
             ListeJoueurs[0].affecterCouleur("jaune");
@@ -108,7 +108,7 @@ public class Partie {
                 saisie = sc.nextInt();
            
             }
-            if (saisie==1){
+            if (saisie==1){ 
                 Scanner s = new Scanner(System.in);
                 int Numcolonne = s.nextInt()-1;
                 while(Numcolonne>6 && Numcolonne<0 ){
@@ -217,5 +217,4 @@ public class Partie {
             //récupérer un jeton de la grille de jeu
             //utiliser un desintégrateur
 
-}
 }
