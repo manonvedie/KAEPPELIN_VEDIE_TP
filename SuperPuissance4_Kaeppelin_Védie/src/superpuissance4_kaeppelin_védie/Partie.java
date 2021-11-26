@@ -65,7 +65,7 @@ public class Partie {
             }
         }
         for (int i = 0; i < 21; i++) {
-            if (ListeJoueurs[0].Couleur.equals("J")) {
+            if (ListeJoueurs[0].Couleur.equals("jaune")) {
                 Jeton jetonjoueurR = new Jeton("J");
                 ListeJoueurs[0].ajouterJeton(jetonjoueurR);
                 Jeton jetonjoueurJ = new Jeton("R");
@@ -73,7 +73,7 @@ public class Partie {
             } else {
                 Jeton jetonjoueurR = new Jeton("J");
                 ListeJoueurs[1].ajouterJeton(jetonjoueurR);
-                Jeton jetonjoueurJ = new Jeton("R");
+                    Jeton jetonjoueurJ = new Jeton("R");
                 ListeJoueurs[0].ajouterJeton(jetonjoueurJ);
             }
         }
@@ -144,16 +144,19 @@ public class Partie {
 
             if (saisie == 2) {
                 Scanner nbre = new Scanner(System.in);
-                System.out.println("entrez votre numéro de ligne pour récuperer votre jeton");
-                int ligne = nbre.nextInt();
+                System.out.println("Entrez le numéro de ligne du jeton à récupérer:");
+                int ligne = nbre.nextInt()-1;
+                Scanner Nombre = new Scanner(System.in);
+                System.out.println("Entrez le numéro de colonne du jeton à récupérer:");
+                int colonne = Nombre.nextInt()-1;
+                
                 while (ligne < 0 && ligne > 5) {
-                    System.out.println("vous ne pouvez pas saisir un tel chiffre");
+                    System.out.println("Veuillez recommencer");
                     ligne = nbre.nextInt() - 1;
                 }
-                Scanner Nombre = new Scanner(System.in);
-                int colonne = Nombre.nextInt();
+                
                 while (colonne < 0 && colonne > 6) {
-                    System.out.println("vous ne pouvez pas saisir un tel chiffre");
+                    System.out.println("Veuillez recommencer");
                     colonne = nbre.nextInt() - 1;
                 }
                 if (GrilleJeu.celluleOccupee(ligne, colonne) == false && GrilleJeu.recupererJeton(ligne, colonne).Couleur.equals(joueurCourant.Couleur)) {

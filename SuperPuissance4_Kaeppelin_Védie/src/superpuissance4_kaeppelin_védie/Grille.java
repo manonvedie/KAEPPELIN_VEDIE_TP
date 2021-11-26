@@ -90,10 +90,10 @@ public class Grille {
   
   public String lireCouleurDuJeton(int lig, int col){
       if ("rouge".equals(CellulesJeu[lig][col].lireCouleurDuJeton())) {
-            return "Rouge";
+            return "rouge";
         }
       else {
-            return "Jaune";
+            return "jaune";
       }
   }
   
