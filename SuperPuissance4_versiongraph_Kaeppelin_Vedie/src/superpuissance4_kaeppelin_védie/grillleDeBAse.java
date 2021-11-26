@@ -9,7 +9,7 @@ package superpuissance4_kaeppelin_védie;
  * @author KAEPPELIN Mayeul
  */
 public class grillleDeBAse {
-    package superpuissance4_kaeppelin_védie;
+    //package superpuissance4_kaeppelin_védie;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
