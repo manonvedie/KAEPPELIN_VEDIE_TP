@@ -64,10 +64,10 @@ public class Grille {
   public void afficherGrilleSurConsole() { // faire les trous noirs
       for(int i=0; i<6; i++) {
           for (int j=0; j<7; j++) {
-              if ("rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
+              if ("R".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
                   System.out.print("R");
               }
-              if ("jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
+              if ("J".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
                   System.out.print("J");
               }
               if ("vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
@@ -192,9 +192,6 @@ return false;
      }
  }
 
-    void ajouterJetonDansColonne(Joueur joueurCourant, int Numcolonne) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
   
 
