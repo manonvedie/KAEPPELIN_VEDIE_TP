@@ -1,4 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package superpuissance4_kaeppelin_védie;
+
+/**
+ *
+ * @author KAEPPELIN Mayeul
+ */
+public class Grille {
+    package superpuissance4_kaeppelin_védie;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -32,7 +43,7 @@ public class Grille {
         if(CellulesJeu[i][Colonne].jetonCourant==null){
             return CellulesJeu[i][Colonne].affecterJeton(J);
            
-        }
+        }  
     
 }
     return true;
@@ -192,6 +203,12 @@ return false;
          return false;
      }
  }
+
+    void ajouterJetonDansColonne(Joueur joueurCourant, int Numcolonne) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
   
 
+
+}
