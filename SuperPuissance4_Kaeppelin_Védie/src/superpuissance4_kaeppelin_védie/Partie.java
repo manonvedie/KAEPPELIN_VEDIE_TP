@@ -66,14 +66,14 @@ public class Partie {
         }
         for (int i = 0; i < 21; i++) {
             if (ListeJoueurs[0].Couleur.equals("jaune")) {
-                Jeton jetonjoueurR = new Jeton("J");
+                Jeton jetonjoueurR = new Jeton("jaune");
                 ListeJoueurs[0].ajouterJeton(jetonjoueurR);
-                Jeton jetonjoueurJ = new Jeton("R");
+                Jeton jetonjoueurJ = new Jeton("rouge");
                 ListeJoueurs[1].ajouterJeton(jetonjoueurJ);
             } else {
-                Jeton jetonjoueurR = new Jeton("J");
+                Jeton jetonjoueurR = new Jeton("jaune");
                 ListeJoueurs[1].ajouterJeton(jetonjoueurR);
-                    Jeton jetonjoueurJ = new Jeton("R");
+                    Jeton jetonjoueurJ = new Jeton("rouge");
                 ListeJoueurs[0].ajouterJeton(jetonjoueurJ);
             }
         }
@@ -211,7 +211,7 @@ public class Partie {
             }
 
             if (GrilleJeu.etreRemplie() == true) {
-                System.out.println("La partie se termine, il n'y a pas de gagant --> égalité!");
+                System.out.println("La partie se termine, il n'y a pas de gagnant --> égalité!");
             }
 
         }
