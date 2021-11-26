@@ -22,14 +22,14 @@ public class Partie {
         if (n!=1){
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
-            System.out.println("la couleur du joueur1 est" +ListeJoueurs[0].Nom);
-             System.out.println("la couleur du joueur2 est" +ListeJoueurs[1].Nom);
+            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " +ListeJoueurs[0].Couleur);
+            System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " +ListeJoueurs[1].Couleur);
         }
         else {
             ListeJoueurs[0].affecterCouleur("jaune");
             ListeJoueurs[1].affecterCouleur("rouge");
-            System.out.println("la couleur du joueur1 est" +ListeJoueurs[1].Nom);
-            System.out.println("la couleur du joueur2 est" +ListeJoueurs[0].Nom);
+            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " +ListeJoueurs[1].Couleur);
+            System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " +ListeJoueurs[0].Couleur);
             
         }  
         
@@ -83,9 +83,9 @@ public class Partie {
     public void debuterPartie(){
             //inscription des 2 joueurs:
         Scanner sca = new Scanner(System.in);
-        System.out.println("Entrez le nom du premier joueur");
+        System.out.println("Entrez le nom du premier joueur :");
         String Joueur1=sca.next();
-        System.out.println("Entrez le nom du second joueur");
+        System.out.println("Entrez le nom du second joueur :");
         String Joueur2=sca.next();
         Joueur J1 = new Joueur(Joueur1);
         Joueur J2 = new Joueur(Joueur2);
@@ -114,27 +114,28 @@ public class Partie {
             GrilleJeu.afficherGrilleSurConsole();
             
             Scanner sc = new Scanner(System.in);
-            System.out.println(joueurCourant.Nom + "c'est a vous de jouer ");
-            System.out.println(joueurCourant.Nom + "il vous reste il faut aussi rajouter le nombre de désintégrateur");
+            System.out.println(joueurCourant.Nom + ", c'est à vous de jouer ! ");
+            System.out.println(joueurCourant.Nom + ", il vous reste " + joueurCourant.nombreDesintegrateurs + " désintégrateurs.");
             System.out.println("1) Placer un jeton");
             System.out.println("2) Récupérer un jeton");
             System.out.println("3) Utiliser un désintégrateur");
             int saisie = sc.nextInt();
             while (saisie>3 || saisie<=0){
-                System.out.println("ERREUR!!!!: Veuillez ressaisir un chiffre compris entre 1 et 3:");
+                System.out.println("ERREUR!! Veuillez ressaisir un chiffre compris entre 1 et 3:");
                 saisie = sc.nextInt();
            
             }
-            if (saisie==1){ 
+            if (saisie==1){
+                System.out.println("Entrez le numéro de colonne: ");
                 Scanner s = new Scanner(System.in);
                 int Numcolonne = s.nextInt()-1;
                 while(Numcolonne>6 && Numcolonne<0 ){
-                    System.out.println("monsieur vous ne savez pas compter les colonnes, ressaisissez un numéro de colonne");
+                    System.out.println("Ressaisissez un numéro de colonne");
                     Numcolonne = s.nextInt()-1;
                     
                 }    
                 while (GrilleJeu.etreRemplie()==true){
-                    System.out.println("la colonne est pleine, entrez a nouveau un nouveau numéro de colonne");
+                    System.out.println("La colonne est pleine, entrez à nouveau un nouveau numéro de colonne");
                     Numcolonne = s.nextInt()-1;
                 }   
                 
