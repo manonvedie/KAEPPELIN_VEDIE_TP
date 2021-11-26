@@ -136,13 +136,17 @@ public class Partie {
                 while (GrilleJeu.etreRemplie()==true){
                     System.out.println("la colonne est pleine, entrez a nouveau un nouveau numéro de colonne");
                     Numcolonne = s.nextInt()-1;
-                }                    
+                }   
                 
-            }
-                
+            GrilleJeu.ajouterJetonDansColonne(joueurCourant, Numcolonne); 
+
             joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants-1;
             System.out.println(joueurCourant.Nom + ", il vous reste"+ joueurCourant.nombreJetonsRestants);
+                    
                 
+            }
+            
+            
                 
                 
                 
