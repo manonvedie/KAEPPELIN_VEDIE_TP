@@ -100,7 +100,7 @@ public class Grille {
   public boolean etreGagnantePourJoueur(Joueur Player) {
       
       String c=Player.Couleur;
-      for (int i=0; i<5; i++) {  // if en ligne //5
+      for (int i=0; i<6; i++) {  // if en ligne //5
           for (int j=0; j<4; j++) {
               
               if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i][j+1].lireCouleurDuJeton()==c && CellulesJeu[i][j+2].lireCouleurDuJeton()==c && CellulesJeu[i][j+3].lireCouleurDuJeton()==c) {
