@@ -159,8 +159,10 @@ public class Partie {
                     System.out.println("Veuillez recommencer");
                     colonne = nbre.nextInt() - 1;
                 }
-                if (GrilleJeu.celluleOccupee(ligne, colonne) == true && GrilleJeu.recupererJeton(ligne, colonne).Couleur.equals(joueurCourant.Couleur)) {
-                  
+                if (GrilleJeu.celluleOccupee(ligne, colonne) == true && !(GrilleJeu.recupererJeton(ligne, colonne).Couleur.equals(joueurCourant.Couleur))) {
+                     System.out.println("Vous n'avez aucun jeton à récupérer ici, vous avez perdu un tour...");
+                }else{
+                    joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants]=GrilleJeu.recupererJeton(ligne,colonne);
                     joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants - 1;
                     System.out.println(joueurCourant.Nom + ", il vous reste " + joueurCourant.nombreJetonsRestants);
                     GrilleJeu.tasserGrille(colonne);
