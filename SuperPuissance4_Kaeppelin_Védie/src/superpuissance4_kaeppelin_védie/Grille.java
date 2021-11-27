@@ -62,16 +62,28 @@ public class Grille {
   }
   
   public void afficherGrilleSurConsole() { // faire les trous noirs
-      for(int i=0; i<6; i++) {
-          for (int j=0; j<7; j++) {
-              if ("rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
-                  System.out.print("R");
-              }
-              if ("jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
-                  System.out.print("J");
-              }
-              if ("vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())) {
-                  System.out.print("_ ");
+      for(int i=0; i<CellulesJeu.length; i++) {
+          for (int j=0; j<CellulesJeu[0].length; j++) {
+              
+             if (CellulesJeu[i][j].presenceTrouNoir()==true && CellulesJeu[i][j].presenceDesintegrateurs()==true) {    
+               System.out.print("\u058D ");
+            }
+             else if (CellulesJeu[i][j].presenceDesintegrateurs()==true && CellulesJeu[i][j].presenceTrouNoir()==false) {    
+               System.out.print("\u235D ");
+            }
+             
+             else if (CellulesJeu[i][j].jetonCourant!=null){
+                if ("rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {    
+                        System.out.print("R ");
+                }
+                if ("jaune".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {    
+                    System.out.print("J ");
+                }
+            }
+
+
+             else {
+                  System.out.print("\u2395 ");
               }
           }
           System.out.println();
