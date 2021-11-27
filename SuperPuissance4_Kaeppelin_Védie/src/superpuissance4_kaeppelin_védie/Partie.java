@@ -187,8 +187,13 @@ public class Partie {
                     System.out.println("Vous ne pouvez pas saisir un tel chiffre");
                     colonne = Nombre2.nextInt() - 1;
 
+                
+                joueurCourant.utiliserDesintegrateur();
+                GrilleJeu.supprimerJeton(ligne,colonne);
+                GrilleJeu.tasserGrille(colonne);
                 }
-                if (saisie == 3 && joueurCourant.nombreDesintegrateurs == 0) {
+            }
+             if (saisie == 3 && joueurCourant.nombreDesintegrateurs == 0) {
                     System.out.println("ERREUR: Vous n'avez pas de désintégrateur à utiliser");
                     System.out.println("Rechoississez ce que vous voulez faire: 1)Placer un jeton ou 2)Récupérer un jeton");
                     saisie = sc.nextInt();
@@ -197,7 +202,7 @@ public class Partie {
                         saisie = sc.nextInt();
                     }
                 }
-            }
+            
 
             if (joueurCourant == ListeJoueurs[0]) {
                 joueurCourant= ListeJoueurs[1] ;
@@ -218,14 +223,14 @@ public class Partie {
             if (GrilleJeu.etreRemplie() == true) {
                 System.out.println("La partie se termine, il n'y a pas de gagnant --> égalité!");
             }
-
+    
         }
-
     }
-
+    
+}
     //afficher la grille
     //demander au joueur ce qu'il veut faire
     //placer un jeton dans une colonne
     //récupérer un jeton de la grille de jeu
     //utiliser un desintégrateur
-}
+
