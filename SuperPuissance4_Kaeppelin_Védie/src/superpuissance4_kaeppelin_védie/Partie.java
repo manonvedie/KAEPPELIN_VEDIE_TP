@@ -203,11 +203,13 @@ public class Partie {
             }
 
             if (GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]) == true) {
-                System.out.println(ListeJoueurs[0].Nom + " a gagné'");
+                System.out.println(ListeJoueurs[0].Nom + " a gagné");
+                break;
             }
 
             if (GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]) == true) {
                 System.out.println(ListeJoueurs[1].Nom + " a gagné");
+                break;
             }
 
             if (GrilleJeu.etreRemplie() == true) {
