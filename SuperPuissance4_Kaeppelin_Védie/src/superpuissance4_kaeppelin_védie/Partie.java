@@ -134,12 +134,12 @@ public class Partie {
                     Numcolonne = s.nextInt() - 1;
 
                 }
+                
 
                 Jeton J = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1];
                 GrilleJeu.ajouterJetonDansColonne(J, Numcolonne);
                 joueurCourant.nombreJetonsRestants -= 1;
-                System.out.println(joueurCourant.Nom + ", il vous reste " + joueurCourant.nombreJetonsRestants + " jetons ");
-
+                System.out.println("Vous avez "+joueurCourant.nombreJetonsRestants +" jetons et "+joueurCourant.nombreDesintegrateurs+" désintégrateur(s) ");
             }
 
             if (saisie == 2) {
@@ -159,7 +159,8 @@ public class Partie {
                     System.out.println("Veuillez recommencer");
                     colonne = nbre.nextInt() - 1;
                 }
-                
+                GrilleJeu.tasserGrille(colonne);
+
                 if (GrilleJeu.celluleOccupee(ligne, colonne) == true && GrilleJeu.recupererJeton(ligne, colonne).Couleur.equals(joueurCourant.Couleur)) {
                     
                     joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants - 1;
@@ -204,7 +205,7 @@ public class Partie {
                 }
             
 
-            if (joueurCourant == ListeJoueurs[0]) {
+            if (joueurCourant == ListeJoueurs[0]) { 
                 joueurCourant= ListeJoueurs[1] ;
             } else {
                 joueurCourant= ListeJoueurs[0] ;
