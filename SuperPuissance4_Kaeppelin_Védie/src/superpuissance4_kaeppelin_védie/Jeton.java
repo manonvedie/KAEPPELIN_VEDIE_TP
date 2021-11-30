@@ -13,7 +13,7 @@ public class Jeton {
     String Couleur;// la couleur du Jeton sera de type string
         
    public Jeton (String JetonCouleur ){
-       Couleur = JetonCouleur;    //Jeton va prendre la veleur de Couleur( définie comme étant un string)
+       Couleur = JetonCouleur;    //Jeton va prendre la valeur de Couleur( définie comme étant un string)
    }  
    
    public String LireCouleur(){
