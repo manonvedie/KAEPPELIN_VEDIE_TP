@@ -19,9 +19,9 @@ public class Cellule {
         trouNoir = true; // la valeur de trounoir et de désintegrateur est définie par défaut comme étant "vraie"
         desintegrateur = true;
     }    
-    public boolean affecterJeton(Jeton JETON){ //
+    public boolean affecterJeton(Jeton JETON){ 
         if (jetonCourant== null) {
-            jetonCourant = JETON;
+            jetonCourant = JETON; //on affecte le jeton en question à la variable jetonCourant
             return true;            
         }
         else {
