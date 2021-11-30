@@ -28,9 +28,8 @@ public class Partie {
         } else {
             ListeJoueurs[0].affecterCouleur("jaune");
             ListeJoueurs[1].affecterCouleur("rouge");
-            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " + ListeJoueurs[1].Couleur);
-            System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " + ListeJoueurs[0].Couleur);
-
+           System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " + ListeJoueurs[0].Couleur);
+            System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " + ListeJoueurs[1].Couleur);
         }
 
     }
