@@ -138,6 +138,7 @@ public class Partie {
 
                 Jeton J = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1];
                 GrilleJeu.ajouterJetonDansColonne(J, Numcolonne);
+                
                 joueurCourant.nombreJetonsRestants -= 1;
                 System.out.println("Vous avez "+joueurCourant.nombreJetonsRestants +" jetons et "+joueurCourant.nombreDesintegrateurs+" désintégrateur(s) ");
             }

@@ -22,7 +22,7 @@ public class Grille {
 
     }
 
-    public boolean ajouterJetonDansColonne(Jeton J, int Colonne) { // fonction validée par le prof     Jeton J
+    public boolean ajouterJetonDansColonne(Jeton JetonCourant, int Colonne) { // fonction validée par le prof     Jeton J
         // on va dans la colonne choisie, on parcourt les lignes du bas vers le haut jusqu'a qu'il y en ait une vide --> on met le jeton dedans.
         if (CellulesJeu[0][Colonne].jetonCourant != null) {
             return false;
@@ -30,10 +30,12 @@ public class Grille {
        //  Jeton J = joueurCourant.ListeJetons[]supprimerJeton();
         for (int i = 5; i >= 0; i--) {
             if (CellulesJeu[i][Colonne].jetonCourant == null) {
-                return CellulesJeu[i][Colonne].affecterJeton(J);
+               
+
+                return CellulesJeu[i][Colonne].affecterJeton(JetonCourant);
 
             }
-
+            
         }
 
         int i = 0;
@@ -41,15 +43,18 @@ public class Grille {
             if (CellulesJeu[i][Colonne].presenceDesintegrateurs()) {
                 CellulesJeu[i][Colonne].recupererDesintegrateur();
                // joueurCourant.nombreDesintegrateurs++;
+               
             }
 
             // on active le potentiel trou noir
             if (CellulesJeu[i][Colonne].presenceTrouNoir()) {
                 CellulesJeu[i][Colonne].activerTrouNoir();
             }
-
+            
         }
+        
         return true;
+
     }
 
     public boolean etreRemplie() {
@@ -171,8 +176,8 @@ public class Grille {
     }
 
     public void tasserGrille(int col) {
-        for (int i = 5; i >= 0; i--) {
-            if (CellulesJeu[i][col] == null) {
+        for (int i = 5; i >= 1; i--) {
+            if (CellulesJeu[i][col].jetonCourant == null) {
                 CellulesJeu[i][col].jetonCourant = CellulesJeu[i - 1][col].jetonCourant;
                 CellulesJeu[i - 1][col].jetonCourant = null;
 
