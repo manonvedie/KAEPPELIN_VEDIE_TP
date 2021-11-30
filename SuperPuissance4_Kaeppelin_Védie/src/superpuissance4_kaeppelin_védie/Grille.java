@@ -86,7 +86,7 @@ public class Grille {
         for (int i = 0; i < CellulesJeu.length; i++) { //on parcourt toute la grille
             for (int j = 0; j < CellulesJeu[0].length; j++) {
 
-                if (CellulesJeu[i][j].presenceTrouNoir() == true) { // si il y a un trou noir dans une case
+                if (CellulesJeu[i][j].presenceTrouNoir() == true && CellulesJeu[i][j].presenceDesintegrateurs()==false) { // si il y a un trou noir dans une case
                     System.out.print("\u058D "); // on affiche un petit symbole (trouvé sur internet :) )
                 } else if (CellulesJeu[i][j].presenceDesintegrateurs() == true && CellulesJeu[i][j].presenceTrouNoir() == false) { //si il y a un désintégrateur
                     System.out.print("\u235D "); // on affiche un autre symbole
