@@ -10,6 +10,10 @@ import java.util.Scanner;
 /**
  *
  * @author vedie
+ * 
+ * 
+ * 
+ * dans cette partie nous allons nous occuper de la partie graphique. nous allons incrémenter certaines parties de notre code afin de rendre l'interface viable.
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
 
@@ -22,12 +26,12 @@ public class fenetreDeJeu extends javax.swing.JFrame {
      */
     public fenetreDeJeu() {
         initComponents();
-        panneau_info_joueurs.setVisible(false);
-        panneau_info_partie.setVisible(false);
+        panneau_info_joueurs.setVisible(false);// permet de rendre visible le panneau info_joueurs
+        panneau_info_partie.setVisible(false);// permet de rendre visible le panneau de la partie. 
 
-        for (int i = 5; i >= 0; i--) {
+        for (int i = 5; i >= 0; i--) {// boucle pour le bon nombre de colonne et ligne
             for (int j = 0; j < 7; j++) {
-                CelluleGraphique CellGraph = new CelluleGraphique(GrilleJeu.CellulesJeu[i][j]);
+                CelluleGraphique CellGraph = new CelluleGraphique(GrilleJeu.CellulesJeu[i][j]);//ici nous allonf afficher la grille de jeu avec le bon nombre de cellules(d'ou la boucle juste au dessus)
                 panneau_grille.add(CellGraph);
 
             }
@@ -272,10 +276,13 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         }
 
         joueurSuivant();
+        // cette partie concerne l'utilisation du 4eme bouton. en effet le " jouer dans colonne(4)" va permettre de jouer dans la 4e colonne.  
+        // ensuite nous allons faire en sorte de ne plus pouvoir cliquer sur le bouton 4 lorque la grille est pleine". ensuite nous appellons le joueur suivant pour qu'il joue. le joueur adverse joue et ainsi de suite.
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
-        // TODO add your handling code here:
+        // cette partie concernele boutons de demarrage. on va le rendre visible une seule fois pour ne pas remodifier le début de partie en recliquant dessus. 
+        // en cliquant dessus, nous allons initialiser la partie avece la grille de départ remplie avec les désintégrateurs et les trous noirs.
         panneau_info_joueurs.setVisible(true);
         panneau_info_partie.setVisible(true);
         initialiserPartie();
@@ -286,7 +293,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_startActionPerformed
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
-        // TODO add your handling code here:
+        // même explication que pour le bouton 4 plus haut saud qu'il s'agit ici du bouton 0
         JouerDansColonne(0);
         if (GrilleJeu.colonneRemplie(0) == true) {
             btn_col_0.setEnabled(false);
@@ -346,35 +353,35 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_col_6ActionPerformed
 
-    public boolean JouerDansColonne(int indice_Colonne) {
+    public boolean JouerDansColonne(int indice_Colonne) {// ici une nouvelle methode qui va permettre de jouer dans la colonne souhaitée
 
-        boolean resultatAction;
+        boolean resultatAction;// resultat va prendre seulement vrai ou faux
         
-        Jeton J = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1];
-        joueurCourant.nombreJetonsRestants -= 1;
+        Jeton J = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1];// diminue le nombre de jetons du joueur courant
+        joueurCourant.nombreJetonsRestants -= 1; 
               
-        resultatAction = GrilleJeu.ajouterJetonDansColonne( J,  indice_Colonne);
+        resultatAction = GrilleJeu.ajouterJetonDansColonne( J,  indice_Colonne);// ajoute le jeton dans la grille
         
-        panneau_grille.repaint();
+        panneau_grille.repaint();// permet de rafraichir l'écran afin de pouvoir jouer normalement. si l'on ne l'utilise pas il faut passer sur les cases a la souris afin de voir les jetons s'afficher
 
-        if (resultatAction == true) {
+        if (resultatAction == true) {// si le joueur a joué on renvoie true
             return true;
 
         } 
         
         
         
-        lbl_j1_desint.setText(ListeJoueurs[0].nombreDesintegrateurs + "");
-        lbl_j2_desint1.setText(ListeJoueurs[1].nombreDesintegrateurs + "");
+        lbl_j1_desint.setText(ListeJoueurs[0].nombreDesintegrateurs + "");// lbl_jl_desint désigne le boutons associé au nombre de désintégrateus du joueur 0 en l'occurance. Ici nous affichons le nombre de désintégrateurs dans un epace de l'interface
+        lbl_j2_desint1.setText(ListeJoueurs[1].nombreDesintegrateurs + "");// idem pour le joueur 1
 
-        boolean vict_j1 = GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]);
-        boolean vict_j2 = GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]);
+        boolean vict_j1 = GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]);// si le joueur 0 gagne la partie 
+        boolean vict_j2 = GrilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]);// si le joueur 1 gagne la partie
         
-        if (vict_j1 && ! vict_j2) textemessage.setText("Victoire de " + ListeJoueurs[0].Nom);
-        if (vict_j2 && ! vict_j1) textemessage.setText("Victoire de " + ListeJoueurs[1].Nom);
+        if (vict_j1 && ! vict_j2) textemessage.setText("Victoire de " + ListeJoueurs[0].Nom);// si le joueur 0 gagne la partie alors nous affichons un message de victoire
+        if (vict_j2 && ! vict_j1) textemessage.setText("Victoire de " + ListeJoueurs[1].Nom);// idem pour le joueur 1
 
         if (vict_j1 &&  vict_j2) {
-            if(joueurCourant == ListeJoueurs[0])textemessage.setText("Victoire de " + ListeJoueurs[1].Nom);
+            if(joueurCourant == ListeJoueurs[0])textemessage.setText("Victoire de " + ListeJoueurs[1].Nom);//si un joueur tente de tricher en jouant après l'autre joueur on affiche un message
             else textemessage.setText("Victoire de " + ListeJoueurs[0].Nom + " faute de jeu de l'autre joueur ");
         }
         return false;
@@ -386,7 +393,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
    }
 
-    public void joueurSuivant() {
+    public void joueurSuivant() {// on incrémente dez méthodes ici afin de rendre opérationnelle l'interface graphique 
         if (joueurCourant == ListeJoueurs[0]) {
             joueurCourant = ListeJoueurs[1];
             lbl_jcourant.setText(joueurCourant.Nom);
@@ -432,6 +439,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
     }
 
+    
+    // A partir de ce moment la nous avons déja commenté les parties suivantes du code dans les différentes classes. le code a été incrémenté 
     public void attribuerCouleursAuxJoueurs() {
         Random generateurAleat = new Random();
         int n = generateurAleat.nextInt(1);
