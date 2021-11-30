@@ -22,46 +22,62 @@ public class Partie {
         if (n!=1){
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
-            System.out.println("la couleur du joueur1 est" +ListeJoueurs[0].Nom);
-            System.out.println("la couleur du joueur2 est" +ListeJoueurs[1].Nom);
+            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " + ListeJoueurs[0].Couleur);
+            System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " + ListeJoueurs[1].Couleur);
         }
         else {
             ListeJoueurs[0].affecterCouleur("jaune");
             ListeJoueurs[1].affecterCouleur("rouge");
-            System.out.println("la couleur du joueur1 est" +ListeJoueurs[1].Nom);
-            System.out.println("la couleur du joueur2 est" +ListeJoueurs[0].Nom);
+            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " + ListeJoueurs[0].Couleur);
+            System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " + ListeJoueurs[1].Couleur);
             
         }  
         
  
     }
     public void initialiserPartie(){
-        int nbrTN = 0 ;
-        int nbrD = 0;
-        while(nbrTN<=5 && nbrD<=5 ){
-            int i=(int)(Math.random() * 6);
-            int j=(int)(Math.random() * 7);
-            if (GrilleJeu.CellulesJeu[i][j].desintegrateur==false && GrilleJeu.CellulesJeu[i][j].trouNoir==false){
-                
-                // a compteter après pour les parties 2,3...
+        GrilleJeu.viderGrille();
+        int nbTN = 0;
+        while (nbTN <= 5) {
+            int ligne = (int) (Math.random() * 6);
+            int colone = (int) (Math.random() * 7);
+            if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur == false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir == false) {
+                if (nbTN == 4 || nbTN == 5) {
+                    GrilleJeu.placerTrouNoir(ligne, colone);
+                    GrilleJeu.placerDesintegrateur(ligne, colone);
+                } else {
+                    GrilleJeu.placerTrouNoir(ligne, colone);
+                }
+                nbTN += 1;
             }
-            
-        }       
-        for (int i =0; i<21;i++){
-            if(ListeJoueurs[0].Couleur.equals("rouge")){
-                Jeton JetonJoueurR = new Jeton ("rouge");
-                ListeJoueurs[0].ajouterJeton(JetonJoueurR);
-                Jeton JetonJoueurJ = new Jeton ("jaune");
-                ListeJoueurs[0].ajouterJeton(JetonJoueurJ);
-                
-                
-                
-                
-            }
-            
         }
-    
+
+        int nbDesint = 0;
+        while (nbDesint <= 3) {
+            int ligne = (int) (Math.random() * 6);
+            int colone = (int) (Math.random() * 7);
+            if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur == false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir == false) {
+                GrilleJeu.placerDesintegrateur(ligne, colone);
+                nbDesint += 1;
+            } else {
+                nbDesint = nbDesint;
+            }
+        }
+        for (int i = 0; i < 21; i++) {
+            if (ListeJoueurs[0].Couleur.equals("jaune")) {
+                Jeton jetonjoueurR = new Jeton("jaune");
+                ListeJoueurs[0].ajouterJeton(jetonjoueurR);
+                Jeton jetonjoueurJ = new Jeton("rouge");
+                ListeJoueurs[1].ajouterJeton(jetonjoueurJ);
+            } else {
+                Jeton jetonjoueurR = new Jeton("jaune");
+                ListeJoueurs[1].ajouterJeton(jetonjoueurR);
+                    Jeton jetonjoueurJ = new Jeton("rouge");
+                ListeJoueurs[0].ajouterJeton(jetonjoueurJ);
+            }
+        }
     }
+    
         
     public void debuterPartie(){
             //inscription des 2 joueurs:
