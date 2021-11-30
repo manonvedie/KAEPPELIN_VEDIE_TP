@@ -280,7 +280,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_info_partie.setVisible(true);
         initialiserPartie();
         panneau_grille.repaint();
-        //btn_start.setEnabled(false);
+        btn_start.setEnabled(false);//permet de ne plus afficher le bouton start
 
 
     }//GEN-LAST:event_btn_startActionPerformed
@@ -349,9 +349,20 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     public boolean JouerDansColonne(int indice_Colonne) {
 
         boolean resultatAction;
-
-        resultatAction = GrilleJeu.ajouterJetonDansColonne(joueurCourant, indice_Colonne);
+        
+        Jeton J = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1];
+        joueurCourant.nombreJetonsRestants -= 1;
+              
+        resultatAction = GrilleJeu.ajouterJetonDansColonne( J,  indice_Colonne);
         panneau_grille.repaint();
+
+        if (resultatAction == true) {
+            return true;
+
+        } 
+        
+        
+        
         lbl_j1_desint.setText(ListeJoueurs[0].nombreDesintegrateurs + "");
         lbl_j2_desint1.setText(ListeJoueurs[1].nombreDesintegrateurs + "");
 
@@ -365,19 +376,14 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             if(joueurCourant == ListeJoueurs[0])textemessage.setText("Victoire de " + ListeJoueurs[1].Nom);
             else textemessage.setText("Victoire de " + ListeJoueurs[0].Nom + " faute de jeu de l'autre joueur ");
         }
+        return false;
 
             
         
-        if (resultatAction == true) {
-            return true;
-
-        } else {
-            return false;
-
-        }
+        
 
 
-    }
+   }
 
     public void joueurSuivant() {
         if (joueurCourant == ListeJoueurs[0]) {
@@ -575,7 +581,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                     GrilleJeu.tasserGrille(colonne);
                     joueurCourant.nombreJetonsRestants = joueurCourant.nombreJetonsRestants - 1;
                     System.out.println(joueurCourant.Nom + ", il vous reste" + joueurCourant.nombreJetonsRestants);
-                }
+                   }
 
             }
 
