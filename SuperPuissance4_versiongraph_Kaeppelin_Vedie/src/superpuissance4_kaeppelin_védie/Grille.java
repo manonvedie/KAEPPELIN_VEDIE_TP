@@ -33,8 +33,24 @@ public class Grille {
             return CellulesJeu[i][Colonne].affecterJeton(J);
            
         }
+    }
+        
+    int i = 0;
+        while (CellulesJeu[i][Colonne].jetonCourant != null) {
+            if (CellulesJeu[i][Colonne].presenceDesintegrateurs()) {
+                CellulesJeu[i][Colonne].recupererDesintegrateur();
+               // joueurCourant.nombreDesintegrateurs++;
+               
+            }
+
+            // on active le potentiel trou noir
+            if (CellulesJeu[i][Colonne].presenceTrouNoir()) {
+                CellulesJeu[i][Colonne].activerTrouNoir();
+            }
+            
+        }
     
-}
+
     return true;
 }
   
@@ -91,17 +107,17 @@ public class Grille {
   
   public String lireCouleurDuJeton(int lig, int col){
       if ("rouge".equals(CellulesJeu[lig][col].lireCouleurDuJeton())) {
-            return "Rouge";
+            return "rouge";
         }
       else {
-            return "Jaune";
+            return "jaune";
       }
   }
   
   public boolean etreGagnantePourJoueur(Joueur Player) {
       
       String c=Player.Couleur;
-      for (int i=0; i<5; i++) {  // if en ligne
+      for (int i=0; i<6; i++) {  // if en ligne
           for (int j=0; j<4; j++) {
               
               if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i][j+1].lireCouleurDuJeton()==c && CellulesJeu[i][j+2].lireCouleurDuJeton()==c && CellulesJeu[i][j+3].lireCouleurDuJeton()==c) {
@@ -121,7 +137,7 @@ public class Grille {
       // if en diagonale montante
       for (int i=3; i<6; i++) {
           for (int j=0; j<4; j++) {
-              if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i+1][j+1].lireCouleurDuJeton()==c && CellulesJeu[i+2][j+2].lireCouleurDuJeton()==c && CellulesJeu[i+3][j+3].lireCouleurDuJeton()==c) {
+              if (CellulesJeu[i][j].lireCouleurDuJeton()==c && CellulesJeu[i-1][j+1].lireCouleurDuJeton()==c && CellulesJeu[i-2][j+2].lireCouleurDuJeton()==c && CellulesJeu[i-3][j+3].lireCouleurDuJeton()==c) {
                   return true;
           }
       }
