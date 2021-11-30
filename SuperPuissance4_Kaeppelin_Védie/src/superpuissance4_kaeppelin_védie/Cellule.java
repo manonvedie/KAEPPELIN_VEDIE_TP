@@ -10,16 +10,16 @@ package superpuissance4_kaeppelin_védie;
  * @author KAEPPELIN Mayeul
  */
 public class Cellule {
-    Jeton jetonCourant; // on initialise 
-    boolean trouNoir;
+    Jeton jetonCourant; // on initialise le jeton courant de la partie 
+    boolean trouNoir;  // on définie trounoir commme étant un boolean, idem pour désintegrateur
     boolean desintegrateur;
     
-    public void Cellule(){
-        jetonCourant=null;
-        trouNoir = true;
+    public void Cellule(){ 
+        jetonCourant=null; // le jeton courant prend de base une valeur nulle (il n'y a rien dans le jeton courant)
+        trouNoir = true; // la valeur de trounoir et de désintegrateur est définie par défaut comme étant "vraie"
         desintegrateur = true;
     }    
-    public boolean affecterJeton(Jeton JETON){
+    public boolean affecterJeton(Jeton JETON){ //
         if (jetonCourant== null) {
             jetonCourant = JETON;
             return true;            
@@ -46,23 +46,23 @@ public class Cellule {
             return true;
         }
         else {
-            return false;
+            return false;// condition pour connaitre la "valeur" de trounoir 
         }
     }
     
     public boolean presenceTrouNoir() {
         if (trouNoir==true) { // si il y a un trou noir
-            return true;
+            return true; //renvoyer le boolean vrai
         }
         else {
          return false;   
         }
     }
     
-    public boolean activerTrouNoir() {
-        if (trouNoir==true) {
-            jetonCourant=null; //si il y a un trou noir, alors on enlève le jeton présent sur la céllule
-            trouNoir=false; // on enlève le trou noir
+    public boolean activerTrouNoir() {// activation de trou noir !
+        if (trouNoir==true) {   // si il a un trou noir sur la case, alors le jeton sur cette case va disparaitre(valeur null)
+            jetonCourant=null; //si il y a un trou noir, alors on enlève le jeton présent sur la cellule
+            trouNoir=false; // on enlève ensuite le trou noir pour la suite de la partie 
             return true;
         }
         else {
@@ -70,13 +70,13 @@ public class Cellule {
         }
     }
       
-    public Jeton recupererJeton() {
+    public Jeton recupererJeton() { // methode qui va permettre de récuperer le jeton courant 
         return jetonCourant; 
     }
     
-    public boolean supprimerJeton() {
-        if (jetonCourant!=null) { // si il y a un jeton
-            jetonCourant=null; // on le supprime
+    public boolean supprimerJeton() { // nous sert a supprimer un jeton c'est assez explicite:)
+        if (jetonCourant!=null) { // si il y a un jeton (sa valeur attribué est" non nulle" ...
+            jetonCourant=null; // ...on le supprime
             return true;
         }
         
@@ -86,8 +86,8 @@ public class Cellule {
     }
     
     public boolean placerDesintegrateur() {
-        if (desintegrateur==false) { //si il n'y a pas de desintegrateur sur la cellule 
-            desintegrateur=true; // on en place un sur la cellule
+        if (desintegrateur==false) { //si il n'y a pas de desintegrateur sur la cellule... 
+            desintegrateur=true; // ...on en place un sur la cellule
             return true;
          }
         else{ 
@@ -95,7 +95,7 @@ public class Cellule {
         }
     }
     
-    public boolean presenceDesintegrateurs() {
+    public boolean presenceDesintegrateurs() { // pour cette methode nous allons verifier la presence des désintégrateurs dans la grille 
         if (desintegrateur==true) {
             return true;
         }

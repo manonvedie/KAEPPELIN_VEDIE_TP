@@ -13,17 +13,17 @@ import java.util.Scanner;
  */
 public class Partie {
 
-    Joueur[] ListeJoueurs = new Joueur[2];
-    Joueur joueurCourant;
-    Grille GrilleJeu = new Grille();
+    Joueur[] ListeJoueurs = new Joueur[2];// tableau de 2 joueurs créé. ListeJoueur est de type Joueur
+    Joueur joueurCourant; // joueurCourant est de type Joueur 
+    Grille GrilleJeu = new Grille(); // la grille de jeu GrilleJeu sera de type Grille définir dans la classe Grille
 
-    public void attribuerCouleursAuxJoueurs() {
-        Random generateurAleat = new Random();
-        int n = generateurAleat.nextInt(1);
-        if (n != 1) {
+    public void attribuerCouleursAuxJoueurs() { // nous allons maintenant attribuer les couleur, jaune ou rouge au joueur 
+        Random generateurAleat = new Random(); // generons un chiffre aléatoire pour choisir les couleurs
+        int n = generateurAleat.nextInt(1); // nombre aléatoire entre 0 et 1 
+        if (n != 1) {// toute cette partie ca servir a dire si le joueur 1 a le numéro 1 alors il sera rouge et l'autre jaune; et inversement 
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
-            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " + ListeJoueurs[0].Couleur);
+            System.out.println("la couleur de " + ListeJoueurs[0].Nom + " est " + ListeJoueurs[0].Couleur); // affichage du nom du joueur et de sa couleur
             System.out.println("la couleur de " + ListeJoueurs[1].Nom + " est " + ListeJoueurs[1].Couleur);
         } else {
             ListeJoueurs[0].affecterCouleur("jaune");
@@ -34,15 +34,15 @@ public class Partie {
 
     }
 
-    public void initialiserPartie() {
+    public void initialiserPartie() { // initialisons la partie maintenant ( permet de débuter la partie et de jouer )
         //Création de la grille
-        GrilleJeu.viderGrille();
+        GrilleJeu.viderGrille();// important de vider la grille lorque nous commençeons la partie
         int nbTN = 0;
-        while (nbTN <= 5) {
-            int ligne = (int) (Math.random() * 6);
-            int colone = (int) (Math.random() * 7);
-            if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur == false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir == false) {
-                if (nbTN == 4 || nbTN == 5) {
+        while (nbTN <= 5) {// va placer le désintégrateurs sur les cellules 
+            int ligne = (int) (Math.random() * 6);// numéro de ligne au hasard
+            int colone = (int) (Math.random() * 7);// numéro de colonne au hasard
+            if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur == false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir == false) {// va placer des désintegrateurs sur les cellules seulement si la cellule ne contient pas de trous noirs ou de désintégrateurs
+                if (nbTN == 4 || nbTN == 5) {// je n'ai pas compris ca manon !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     GrilleJeu.placerTrouNoir(ligne, colone);
                     GrilleJeu.placerDesintegrateur(ligne, colone);
                 } else {
@@ -52,9 +52,9 @@ public class Partie {
             }
         }
 
-        int nbDesint = 0;
+        /*int nbDesint = 0; // nous allons placer 4 désintégrateurs
         while (nbDesint <= 3) {
-            int ligne = (int) (Math.random() * 6);
+            int ligne = (int) (Math.random() * 6);// nous gérerons un nombre aléatoire comme auparavant
             int colone = (int) (Math.random() * 7);
             if (GrilleJeu.CellulesJeu[ligne][colone].desintegrateur == false && GrilleJeu.CellulesJeu[ligne][colone].trouNoir == false) {
                 GrilleJeu.placerDesintegrateur(ligne, colone);
@@ -62,9 +62,9 @@ public class Partie {
             } else {
                 nbDesint = nbDesint;
             }
-        }
+        }*/
         for (int i = 0; i < 21; i++) {
-            if (ListeJoueurs[0].Couleur.equals("jaune")) {
+            if (ListeJoueurs[0].Couleur.equals("jaune")) { // si la couleur du joueur est jaune  alors ses jetons serons jaune
                 Jeton jetonjoueurR = new Jeton("jaune");
                 ListeJoueurs[0].ajouterJeton(jetonjoueurR);
                 Jeton jetonjoueurJ = new Jeton("rouge");

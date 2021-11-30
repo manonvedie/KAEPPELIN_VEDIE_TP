@@ -10,14 +10,14 @@ package superpuissance4_kaeppelin_védie;
  * @author KAEPPELIN Mayeul
  */
 public class Jeton {    
-    String Couleur;
+    String Couleur;// la couleur du Jeton sera de type string
         
    public Jeton (String JetonCouleur ){
-       Couleur = JetonCouleur;
+       Couleur = JetonCouleur;    //Jeton va prendre la veleur de Couleur( définie comme étant un string)
    }  
    
    public String LireCouleur(){
-       return Couleur;
+       return Couleur; // renvoie la couleur du jeton 
    }   
 }
        
