@@ -354,6 +354,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         joueurCourant.nombreJetonsRestants -= 1;
               
         resultatAction = GrilleJeu.ajouterJetonDansColonne( J,  indice_Colonne);
+        
         panneau_grille.repaint();
 
         if (resultatAction == true) {
