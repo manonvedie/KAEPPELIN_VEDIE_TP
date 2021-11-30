@@ -25,7 +25,11 @@ public class SuperPuissance4_Kaeppelin_Védie {
         // G.afficherGrilleSurConsole();
         G.ajouterJetonDansColonne(j,4);
         G.afficherGrilleSurConsole();*/
-        Partie la_partie = new Partie();
+        
+        // on a effectué des tests si dessus pour contrôler notre code, tout fonctionnait parfaitement.
+        
+        
+        Partie la_partie = new Partie(); //on initialise une nouvelle partie, qu'on va lancer !
         la_partie.debuterPartie();
        
        
